@@ -26,9 +26,17 @@ ament_target_dependencies(read_write_node
   rclcpp
 )
 
+add_executable(sync_read_write_node src/sync_read_write_node.cpp)
+ament_target_dependencies(sync_read_write_node
+  dynamixel_sdk_custom_interfaces
+  dynamixel_sdk
+  rclcpp
+)
+
 # Install
 install(TARGETS
   read_write_node
+  sync_read_write_node
   DESTINATION lib/${PROJECT_NAME}
 )
 
