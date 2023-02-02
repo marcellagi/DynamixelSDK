@@ -81,14 +81,14 @@ ReadWriteNode::ReadWriteNode()
 
       // Position Value of X series is 4 byte data.
       // For AX & MX(1.0) use 2 byte data(uint16_t) for the Position Value.
-      uint32_t goal_position = (unsigned int)msg->position;  // Convert int32 -> uint32
+      uint32_t goal_position = (unsigned int)msg->position[0];  // Convert int32 -> uint32
 
       // Write Goal Position (length : 4 bytes)
       // When writing 2 byte data to AX / MX(1.0), use write2ByteTxRx() instead.
       dxl_comm_result =
       packetHandler->write4ByteTxRx(
         portHandler,
-        (uint8_t) msg->id,
+        (uint8_t) msg->id[0],
         ADDR_GOAL_POSITION,
         goal_position,
         &dxl_error
@@ -99,7 +99,7 @@ ReadWriteNode::ReadWriteNode()
       } else if (dxl_error != 0) {
         RCLCPP_INFO(this->get_logger(), "%s", packetHandler->getRxPacketError(dxl_error));
       } else {
-        RCLCPP_INFO(this->get_logger(), "Set [ID: %d] [Goal Position: %d]", msg->id, msg->position);
+        RCLCPP_INFO(this->get_logger(), "Set [ID: %d] [Goal Position: %d]", msg->id[0], msg->position[0]);
       }
     }
     );
