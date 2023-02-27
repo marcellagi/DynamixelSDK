@@ -60,7 +60,7 @@ uint32_t goal_position = 0;
 int dxl_comm_result = COMM_TX_FAIL;
 
 ReadWriteNode::ReadWriteNode()
-: Node("read_write_node")
+: Node("sync_read_write_node")
 {
   RCLCPP_INFO(this->get_logger(), "Run sync read write node");
 
