@@ -147,7 +147,7 @@ void setupDynamixel(uint8_t dxl_id)
     portHandler,
     dxl_id,
     ADDR_OPERATING_MODE,
-    3,
+    4,
     &dxl_error
   );
 
